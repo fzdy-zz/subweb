@@ -1,5 +1,39 @@
 # subconverter
 
+#####arm64
+tar -zxvf subconverter_aarch64.tar.gz
+
+
+subconverter
+
+##linux 
+/usr/lib/systemd/system/subconverter.service
+
+[Unit]
+Description=subconverter
+After=network.target
+ 
+[Service]
+Type=simple
+WorkingDirectory=/root
+ExecStart=./subconverter
+Restart=on-failure
+ 
+[Install]
+WantedBy=multi-user.target
+
+
+
+然后，执行 systemctl daemon-reload 重载配置，现在你可以使用这些命令来管理程序：
+
+启动: systemctl start subconverter
+关闭: systemctl stop subconverter
+配置开机自启: systemctl enable subconverter
+取消开机自启: systemctl disable subconverter
+状态: systemctl status subconverter
+重启: systemctl restart subconverter
+
+
 在各种订阅格式之间进行转换的实用程序.
 
 [![Build Status](https://travis-ci.com/tindy2013/subconverter.svg?branch=master)](https://travis-ci.com/tindy2013/subconverter)
